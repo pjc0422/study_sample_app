@@ -2,22 +2,49 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/flow_navigation"
-    app:startDestination="@id/flowFirstFragment">
+    app:startDestination="@id/introFragment">
+
 
     <fragment
-        android:id="@+id/flowFirstFragment"
-        android:name="com.example.sampleapp.ui.fragments.flow.FlowFirstFragment"
-        android:label="FlowFirstFragment" >
+        android:id="@+id/homeFragment"
+        android:name="com.example.sampleapp.ui.fragments.HomeFragment"
+        android:label="HomeFragment" >
         <action
-            android:id="@+id/action_flowFirstFragment_to_flowSecondFragment"
-            app:destination="@id/flowSecondFragment" />
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/flowSecondFragment"
-        android:name="com.example.sampleapp.ui.fragments.flow.FlowSecondFragment"
-        android:label="FlowSecondFragment" >
+        android:id="@+id/joinFragment"
+        android:name="com.example.sampleapp.ui.fragments.JoinFragment"
+        android:label="JoinFragment" >
         <action
-            app:popUpTo="@id/flowFirstFragment"
-            android:id="@+id/action_flowSecondFragment_to_flowFirstFragment" />
+            android:id="@+id/action_joinFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_joinFragment_to_loginFragment"
+            app:popUpTo="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="com.example.sampleapp.ui.fragments.IntroFragment"
+        android:label="IntroFragment" >
+        <action
+            android:id="@+id/action_introFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:launchSingleTop="false" />
+        <action
+            android:id="@+id/action_introFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.sampleapp.ui.fragments.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_joinFragment"
+            app:destination="@id/joinFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>
