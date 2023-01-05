@@ -1,18 +1,24 @@
-package com.example.sampleapp.ui.fragments
+package com.example.sampleapp.ui.fragments.home.setting
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.Column
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 
-class JoinFragment: Fragment() {
+class ProfileFragment: Fragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return ComposeView(requireContext())
+        return ComposeView(requireContext()).apply {
+            setContent {
+
+            }
+        }
     }
 }

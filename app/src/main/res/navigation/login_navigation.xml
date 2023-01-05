@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/login_navigation"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.sampleapp.ui.fragments.LoginFragment"
+        android:label="LoginFragment" >
+
+        <action
+            android:id="@+id/action_loginFragment_to_joinFragment"
+            app:destination="@id/joinFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/joinFragment"
+        android:name="com.example.sampleapp.ui.fragments.join.JoinFragment"
+        android:label="JoinFragment">
+        <action
+            android:id="@+id/action_joinFragment_to_joinProvisionFragment"
+            app:destination="@id/joinProvisionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/joinProvisionFragment"
+        android:name="com.example.sampleapp.ui.fragments.join.JoinProvisionFragment"
+        android:label="JoinProvisionFragment" />
+
+</navigation>

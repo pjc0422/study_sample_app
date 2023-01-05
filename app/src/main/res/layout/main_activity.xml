@@ -11,7 +11,8 @@
         android:layout_height="match_parent"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:id="@+id/content_view"
-        app:navGraph="@navigation/flow_navigation"
+        app:navGraph="@navigation/intro_navigation"
+        app:defaultNavHost="true"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

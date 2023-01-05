@@ -22,9 +22,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.sampleapp.R
 import com.example.sampleapp.ui.theme.SampleAppTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class LoginFragment: Fragment() {
+class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -165,23 +171,29 @@ class LoginFragment: Fragment() {
                     .padding(16.dp)
             ) {
                 // in the below line, we are adding text for our button
-                Text(text = "Update Data", modifier = Modifier.padding(8.dp))
+                Text(text = "Login", modifier = Modifier.padding(8.dp))
             }
 
             // in the below line, we are adding a spacer.
             Spacer(modifier = Modifier.height(20.dp))
 
-            // in the below line, we are creating a text for displaying a response.
-            Text(
-                text = response.value,
-                color = Color.Black,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold, modifier = Modifier
-                    .padding(10.dp)
-                    .fillMaxWidth(),
-                textAlign = TextAlign.Center
-            )
+            Button(
+                onClick = {
+                    join()
+                },
+                // in the below line, we are adding modifier to our button.
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                // in the below line, we are adding text for our button
+                Text(text = "join", modifier = Modifier.padding(8.dp))
+            }
         }
+    }
+
+    private fun join() {
+        findNavController().navigate(R.id.action_loginFragment_to_joinFragment)
     }
 
     private fun checkLogin(
@@ -190,14 +202,18 @@ class LoginFragment: Fragment() {
         result: MutableState<String>
     ) {
 
-        /// 특이하게 main thread가 아니어도 state에 값을 대입해도 해당 state는 화면에 반영이 된다.
-        Runnable {
-            /// sleep for test
-            Thread.sleep(4000)
+        CoroutineScope(Dispatchers.IO).launch {
+            ///TODO : check login user
+            withContext(Dispatchers.IO) {
+                Thread.sleep(3000)
+            }
 
-            result.value = "hello world ${userName.value.text}, ${pw.value.text}"
-        }.run()
+            launch(Dispatchers.Main) {
+//                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                findNavController().setGraph(R.navigation.home_navigation)
 
+            }
+        }
     }
 
 }
