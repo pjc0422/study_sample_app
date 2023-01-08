@@ -25,8 +25,6 @@ class HomeFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        findNavController().navigateUp()
-
         return ComposeView(requireContext()).apply {
             setContent {
                 SampleAppTheme {
